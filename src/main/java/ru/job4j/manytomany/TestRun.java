@@ -1,3 +1,5 @@
+package ru.job4j.manytomany;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -5,7 +7,6 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 public class TestRun {
-
     public static void main(String[] args) {
         final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
@@ -13,18 +14,21 @@ public class TestRun {
         Session session = sf.openSession();
         try {
             session.beginTransaction();
-            ModelAuto model1 = ModelAuto.of("Kalina1");
-            ModelAuto model2 = ModelAuto.of("Kalina2");
-            ModelAuto model3 = ModelAuto.of("Priora1");
-            ModelAuto model4 = ModelAuto.of("Priora2");
-            ModelAuto model5 = ModelAuto.of("Granta");
-            BrandAuto brand = BrandAuto.of("VAZ");
-            brand.addModel(model1);
-            brand.addModel(model2);
-            brand.addModel(model3);
-            brand.addModel(model4);
-            brand.addModel(model5);
-            session.save(brand);
+//            Author author1 = Author.of("Pushkin A.S.");
+//            Author author2 = Author.of("Tolstoy L.N.");
+//            Book book1 = Book.of("Kapitaskay dochka");
+//            Book book2 = Book.of("Evgeniy Anegin");
+//            Book book3 = Book.of("Skazka");
+//            author1.getBooks().add(book1);
+//            author1.getBooks().add(book2);
+//            author1.getBooks().add(book3);
+//            author2.getBooks().add(book3);
+//            session.save(author1);
+//            session.save(author2);
+
+            Author author = session.get(Author.class, 2);
+            session.remove(author);
+
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();

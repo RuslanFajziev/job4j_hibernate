@@ -16,7 +16,9 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
 
-        <mapping class="BrandAuto" />
-        <mapping class="ModelAuto" />
+        <mapping class="ru.job4j.onetomany.BrandAuto" />
+        <mapping class="ru.job4j.onetomany.ModelAuto" />
+        <mapping class="ru.job4j.manytomany.Author" />
+        <mapping class="ru.job4j.manytomany.Book" />
     </session-factory>
 </hibernate-configuration>

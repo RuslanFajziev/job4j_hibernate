@@ -1,8 +1,10 @@
+package ru.job4j.onetomany;
+
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "ModelAuto")
+@Table(name = "modelauto")
 public class ModelAuto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
