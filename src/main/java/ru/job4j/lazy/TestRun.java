@@ -20,13 +20,9 @@ public class TestRun {
         try {
             session.beginTransaction();
 
-            lst = session.createQuery("FROM brand").list();
-
-            for (Brand brand : lst) {
-                for (Model model : brand.getModels()) {
-                    System.out.println(model);
-                }
-            }
+            lst = session.createQuery(
+                    "select distinct c from brand c join fetch c.models"
+            ).list();
 
             session.getTransaction().commit();
         } catch (Exception e) {
@@ -35,5 +31,10 @@ public class TestRun {
         } finally {
             session.close();
         }
+
+        for (Model model : lst.get(0).getModels()) {
+            System.out.println(model);
+        }
+
     }
 }
